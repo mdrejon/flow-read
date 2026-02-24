@@ -1,0 +1,189 @@
+/* Admin CSS */
+
+.flow-read-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* Reading Progress Bar Settings Styles */
+.flowread-progressbar-settings {
+    max-width: 900px;
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.flowread-progressbar-settings h3 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+/* Setting Group Styles */
+.flowread-progressbar-settings .setting-group {
+    margin-bottom: 16px;
+    padding: 16px;
+    background: #f9f9f9;
+    border-radius: 6px; 
+    transition: all 0.3s ease;
+}
+
+.flowread-progressbar-settings .setting-group:hover {
+    background: #f5f5f5;
+    border-left-color: #005a87;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.flowread-progressbar-settings .setting-group:last-of-type {
+    margin-bottom: 30px;
+}
+
+/* Label Styles */
+ 
+/* Label Styles */
+.flowread-progressbar-settings .setting-group .setting-group-field > label {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #1d2327;
+    width: 100%;
+}
+
+/* Input and Select Styles */
+.flowread-progressbar-settings select,
+.flowread-progressbar-settings input[type="number"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 8px 12px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: #fff;
+}
+
+.flowread-progressbar-settings select:focus,
+.flowread-progressbar-settings input[type="number"]:focus {
+    outline: none;
+    border-color: #007cba;
+    box-shadow: 0 0 0 1px #007cba;
+}
+
+.flowread-progressbar-settings select:hover,
+.flowread-progressbar-settings input[type="number"]:hover {
+    border-color: #a0a0a0;
+}
+
+/* Color Input Styles */
+.flowread-progressbar-settings input[type="color"] {
+    width: 80px;
+    height: 40px;
+    padding: 4px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.flowread-progressbar-settings input[type="color"]:hover {
+    border-color: #007cba;
+    transform: scale(1.05);
+}
+
+.flowread-progressbar-settings input[type="color"]:focus {
+    outline: none;
+    border-color: #007cba;
+    box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.2);
+}
+
+/* Checkbox Group Styles */
+.flowread-progressbar-settings .checkbox-group {
+    margin-top: 10px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+}
+
+.flowread-progressbar-settings .checkbox-group label {
+    display: inline-flex;
+    align-items: center;
+    margin: 8px 0;
+    font-weight: normal;
+    font-size: 14px;
+    color: #2c3338;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.flowread-progressbar-settings .checkbox-group label:hover {
+    color: #007cba;
+}
+
+.flowread-progressbar-settings .checkbox-group input[type="checkbox"] {
+  
+    margin-right: 8px;
+    cursor: pointer;
+    accent-color: #007cba;
+}
+
+/* Submit Button Area */
+.flowread-progressbar-settings .submit {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #f0f0f0;
+}
+
+.flowread-progressbar-settings .submit .button-primary {
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.flowread-progressbar-settings .submit .button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 124, 186, 0.3);
+}
+
+/* Notice Styles */
+.flowread-progressbar-settings .notice {
+    margin: 20px 0;
+    padding: 12px 15px;
+    border-radius: 4px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 782px) {
+    .flowread-progressbar-settings {
+        padding: 15px 20px;
+    }
+    
+    .flowread-progressbar-settings .setting-group {
+        padding: 15px;
+    }
+    
+    .flowread-progressbar-settings select,
+    .flowread-progressbar-settings input[type="number"] {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .flowread-progressbar-settings h3 {
+        font-size: 18px;
+    }
+    
+    .flowread-progressbar-settings .setting-group {
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "name": "flowread/flow-read",
+    "description": "FlowRead – Smart Reading Experience for Websites",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "sydurrahman",
+            "homepage": "https://sydurrahman.com/"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "FlowRead\\": "app/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    }
+}
