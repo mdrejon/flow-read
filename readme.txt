@@ -120,8 +120,6 @@ Simply don't select any post types in the settings, and the features won't displ
 = 1.0.0 =
 - Initial release
 
-== Screenshots ==
-
 == Development ==
 
 **Requirements:**
