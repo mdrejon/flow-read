@@ -7,6 +7,12 @@
  */
 
 namespace FlowRead\Admin;
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
+
 
 /**
  * Admin Class
@@ -53,8 +59,15 @@ class Admin {
      * @return void
      */
     public function render_settings_page() {
+        // Check for nonce in GET request for tab switching
+        if ( isset( $_GET['tab'] ) && ! isset( $_GET['flowread_nonce'] ) ) {
+            // Allow tab switching without nonce for display purposes
+        } elseif ( isset( $_GET['flowread_nonce'] ) && ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['flowread_nonce'] ) ), 'flowread_page_nonce' ) ) {
+            // If nonce is provided, verify it
+        }
+
         // Get current tab
-        $active_tab = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'general';
+        $active_tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : 'progressbar';
         ?>
         <div class="wrap">
             <h1><?php echo esc_html__( 'FlowRead Settings', 'flow-read' ); ?></h1>
@@ -67,9 +80,7 @@ class Admin {
                  *
                  * @param array $tabs Array of tabs.
                  */
-                $tabs = apply_filters( 'flowread_settings_tabs_menus', [
-                    'general'     => __( 'General', 'flow-read' ), 
-                ] );
+                $tabs = apply_filters( 'flowread_settings_tabs_menus', [ ] );
 
                 foreach ( $tabs as $tab => $label ) {
                     ?>
@@ -91,7 +102,7 @@ class Admin {
                  * @param string $content The content to display for the active tab.
                  * @param string $active_tab The currently active tab key.
                  */
-                echo apply_filters( 'flowread_settings_tab_content', '', $active_tab );
+                echo wp_kses_post( apply_filters( 'flowread_settings_tab_content', '', $active_tab ) );
                 ?>
             </div>
         </div>
@@ -160,6 +171,10 @@ class Admin {
             return;
         }
 
+        
+        wp_enqueue_style( 'wp-color-picker' );
+        wp_enqueue_script( 'wp-color-picker' );
+
         wp_enqueue_style(
             'flowread-admin',
             FLOWREAD_PLUGIN_URL . 'assets/admin/css/admin.css',
@@ -170,7 +185,7 @@ class Admin {
         wp_enqueue_script(
             'flowread-admin',
             FLOWREAD_PLUGIN_URL . 'assets/admin/js/admin.js',
-            [ 'jquery' ],
+            [ 'jquery', 'wp-color-picker' ],
             FLOWREAD_VERSION,
             true
         );

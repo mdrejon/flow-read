@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class ReadingProgressBar {
     public function __construct() {
-        add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_assets' ] );
+        add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_assets' ] ); 
         add_action( 'wp_footer', [ $this, 'render_progress_bar' ] );
         
         add_filter( 'flowread_settings_tab_content', [ $this, 'render_progressbar_settings_content' ], 10, 2 );
@@ -15,12 +15,76 @@ class ReadingProgressBar {
     }
 
     public function enqueue_assets() {
-        wp_enqueue_style( 'flowread-reading-bar', plugin_dir_url( __FILE__ ) . 'assets/reading-bar.css' );
-        wp_enqueue_script( 'flowread-reading-bar', plugin_dir_url( __FILE__ ) . 'assets/reading-bar.js', [ 'jquery' ], null, true );
+        wp_enqueue_style( 'flowread-reading-bar', FLOWREAD_PLUGIN_URL . 'assets/app/css/reading-progressbar.css' );
+        wp_enqueue_script( 'flowread-reading-bar', FLOWREAD_PLUGIN_URL . 'assets/app/js/reading-progressbar.js', [ 'jquery' ], null, true );
     }
+ 
 
     public function render_progress_bar() {
-        echo '<div id="flowread-progress-bar"><div class="progress"></div></div>';
+        // Get options
+        $options = get_option( 'flowread_reading_bar', [] );
+
+        // Get current post type
+        $current_post_type = get_post_type();
+        
+        // Get current template
+        $current_template = get_page_template_slug();
+
+        // Check if progress bar should display on current page
+        $display_position = isset( $options['display_position'] ) ? $options['display_position'] : '';
+        $selected_post_types = isset( $options['post_types'] ) ? (array) $options['post_types'] : []; 
+
+        // Verify post type and template constraints
+        $show_on_post_type = empty( $selected_post_types ) || in_array( $current_post_type, $selected_post_types, true );
+ 
+        // Don't show if constraints are not met
+        if ( ! $display_position || ( ! empty( $selected_post_types ) && ! $show_on_post_type ) ) {
+            return;
+        }
+
+        // Get styling options
+        $style = isset( $options['style'] ) ? $options['style'] : 'classic';
+        $height = isset( $options['height'] ) ? absint( $options['height'] ) : 4;
+        $background_color = isset( $options['background_color'] ) ? $options['background_color'] : '#f0f0f0';
+        $primary_color = isset( $options['primary_color'] ) ? $options['primary_color'] : '#007cba';
+        $secondary_color = isset( $options['secondary_color'] ) ? $options['secondary_color'] : '#442334';
+
+        // Inline styles
+        $bar_style = sprintf(
+            'height: %dpx; background-color: %s;',
+            $height,
+            esc_attr( $background_color )
+        );
+
+        if ( 'gradient' === $style ) {
+            $progress_style = sprintf(
+                'background: linear-gradient(to right, %s, %s); height: 100%%; width: 0%%;',
+                esc_attr( $primary_color ),
+                esc_attr( $secondary_color )
+            );
+        } else {
+            $progress_style = sprintf(
+                'background-color: %s; height: 100%%; width: 0%%;',
+                esc_attr( $primary_color )
+            );
+        }
+
+        // Add data attributes for JavaScript
+        $data_attrs = sprintf(
+            'data-position="%s" data-style="%s" data-height="%d"',
+            esc_attr( $display_position ),
+            esc_attr( $style ),
+            $height
+        );
+
+        echo sprintf(
+            '<div id="flowread-progress-bar" class="flowread-position-%s flowread-style-%s" style="%s" %s><div class="progress" style="%s"></div></div>',
+            esc_attr( $display_position ),
+            esc_attr( $style ),
+            esc_attr( $bar_style ),
+            esc_attr( $data_attrs ),
+            esc_attr( $progress_style )
+        );
     }
 
     public function render_progressbar_settings_content( $content, $tab ) {
@@ -58,16 +122,18 @@ class ReadingProgressBar {
                 if ( isset( $_POST['flowread_reading_bar']['primary_color'] ) ) {
                     $settings['primary_color'] = sanitize_hex_color( wp_unslash( $_POST['flowread_reading_bar']['primary_color'] ) );
                 }
+
+                // Sanitize secondary_color
+                if ( isset( $_POST['flowread_reading_bar']['secondary_color'] ) ) {
+                    $settings['secondary_color'] = sanitize_hex_color( wp_unslash( $_POST['flowread_reading_bar']['secondary_color'] ) );
+                }
                 
                 // Sanitize post_types
                 if ( isset( $_POST['flowread_reading_bar']['post_types'] ) ) {
                     $settings['post_types'] = array_map( 'sanitize_text_field', wp_unslash( (array) $_POST['flowread_reading_bar']['post_types'] ) );
                 }
                 
-                // Sanitize templates
-                if ( isset( $_POST['flowread_reading_bar']['templates'] ) ) {
-                    $settings['templates'] = array_map( 'sanitize_text_field', wp_unslash( (array) $_POST['flowread_reading_bar']['templates'] ) );
-                }
+   
                 
                 update_option( 'flowread_reading_bar', $settings );
                 echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Settings saved successfully!', 'flow-read' ) . '</p></div>';
@@ -91,12 +157,15 @@ class ReadingProgressBar {
             // 'animated' => __( 'Animated', 'flow-read' ),
         ];
 
-        $post_types = get_post_types( [ 'public' => true ], 'objects' );
-        $templates = get_page_templates();
+        $post_types = get_post_types( [ 'public' => true ], 'objects' ); 
 
         ?>
         <div class="flow-read-settings-wrap flowread-progressbar-settings">
-            <h3><?php esc_html_e( 'Reading Progress Bar Settings', 'flow-read' ); ?></h3>
+            <div class="flow-read-heading">
+                <h2><?php esc_html_e( 'Reading Progress Bar Settings', 'flow-read' ); ?></h2>
+                <p><?php esc_html_e( 'Configure the appearance and behavior of the reading progress bar on your site.', 'flow-read' ); ?></p>
+ 
+            </div>
             <form method="post" action="">
                 <?php wp_nonce_field( 'flowread_progressbar_nonce', 'flowread_progressbar_nonce_field' ); ?>
                 
@@ -146,7 +215,7 @@ class ReadingProgressBar {
                         <label for="flowread_background_color">
                             <?php esc_html_e( 'Background Color', 'flow-read' ); ?>
                         </label>
-                        <input type="color" id="flowread_background_color" name="flowread_reading_bar[background_color]" value="<?php echo isset( $options['background_color'] ) ? esc_attr( $options['background_color'] ) : '#f0f0f0'; ?>" />
+                        <input type="text" class="flowread-color-field" id="flowread_background_color" name="flowread_reading_bar[background_color]" data-default-color="#f0f0f0" value="<?php echo isset( $options['background_color'] ) ? esc_attr( $options['background_color'] ) : '#f0f0f0'; ?>" />
                     </div>
 
                     <!-- Primary Color -->
@@ -154,7 +223,15 @@ class ReadingProgressBar {
                         <label for="flowread_primary_color">
                             <?php esc_html_e( 'Primary Color', 'flow-read' ); ?>
                         </label>
-                        <input type="color" id="flowread_primary_color" name="flowread_reading_bar[primary_color]" value="<?php echo isset( $options['primary_color'] ) ? esc_attr( $options['primary_color'] ) : '#007cba'; ?>" />
+                        <input type="text" class="flowread-color-field" id="flowread_primary_color" name="flowread_reading_bar[primary_color]" data-default-color="#007cba" value="<?php echo isset( $options['primary_color'] ) ? esc_attr( $options['primary_color'] ) : '#007cba'; ?>" />
+                    </div>
+
+                       <!-- Secondary Color -->
+                    <div class="setting-group-field" id="flowread_secondary_color_field" style="width: calc(33% - 16px);">
+                        <label for="flowread_secondary_color">
+                            <?php esc_html_e( 'Secondary Color', 'flow-read' ); ?>
+                        </label>
+                        <input type="text" class="flowread-color-field" id="flowread_secondary_color" name="flowread_reading_bar[secondary_color]" data-default-color="#007cba" value="<?php echo isset( $options['secondary_color'] ) ? esc_attr( $options['secondary_color'] ) : '#007cba'; ?>" />
                     </div>
                      
                 </div> 
@@ -163,7 +240,7 @@ class ReadingProgressBar {
               
                 <div class="setting-group flow-read-flex">
                       <!-- Post Types -->
-                    <div class="setting-group-field" style="width: calc(50% - 16px);">
+                    <div class="setting-group-field" style="width: 100%;">
                         <label><?php esc_html_e( 'Apply to Post Types', 'flow-read' ); ?></label>
                         <div class="checkbox-group">
                             <?php
@@ -181,23 +258,7 @@ class ReadingProgressBar {
                             <?php endforeach; ?>
                         </div>
                     </div>
-
-                    <!-- Templates -->
-                    <div class="setting-group-field" style="width: calc(50% - 16px);">
-                        <label><?php esc_html_e( 'Apply to Templates', 'flow-read' ); ?></label>
-                        <div class="checkbox-group">
-                            <?php
-                            $selected_templates = isset( $options['templates'] ) ? (array) $options['templates'] : [];
-                            foreach ( $templates as $template_name => $template_label ) :
-                                ?>
-                                <label>
-                                    <input type="checkbox" name="flowread_reading_bar[templates][]" value="<?php echo esc_attr( $template_name ); ?>" <?php checked( in_array( $template_name, $selected_templates, true ) ); ?> />
-                                    <?php echo esc_html( $template_label ); ?>
-                                </label>
-                                <br />
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
+ 
                     
                 </div>
 
@@ -212,7 +273,7 @@ class ReadingProgressBar {
     }
 
     public function flowread_settings_tabs_menus( $tabs ) {
-        $tabs['progressbar'] = __( 'Progress Bar', 'flow-read' );
+        $tabs['progressbar'] = __( 'Reading Progress Bar', 'flow-read' );
         return $tabs;
     }
 }

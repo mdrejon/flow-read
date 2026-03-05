@@ -110,11 +110,7 @@ final class Plugin {
      * @return void
      */
     public function load_textdomain() {
-        load_plugin_textdomain(
-            'flow-read',
-            false,
-            dirname( plugin_basename( FLOWREAD_PLUGIN_FILE ) ) . '/languages'
-        );
+        // Translations are automatically loaded by WordPress for plugins hosted on wordpress.org
     }
 
     /**

@@ -1,0 +1,65 @@
+/* Reading Progress Bar Styles */
+
+#flowread-progress-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    transition: width 0.3s ease;
+}
+
+/* Position Variants */
+
+#flowread-progress-bar.flowread-position-top {
+    top: 0;
+}
+
+#flowread-progress-bar.flowread-position-bottom {
+    bottom: 0;
+}
+
+#flowread-progress-bar.flowread-position-fixed-top {
+    top: 0;
+    position: fixed;
+}
+
+/* Style Variants */
+
+/* Classic Style */
+#flowread-progress-bar.flowread-style-classic .progress {
+    background-color: inherit;
+    transition: width 0.3s ease;
+    box-shadow: none;
+}
+
+/* Gradient Style */
+#flowread-progress-bar.flowread-style-gradient .progress {
+    background: linear-gradient(
+        90deg,
+        #667eea 0%,
+        #764ba2 25%,
+        #f093fb 50%,
+        #4facfe 75%,
+        #00f2fe 100%
+    );
+    background-size: 200% 100%; 
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 200% 0;
+    }
+    50% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #flowread-progress-bar {
+        z-index: 9998;
+    }
+}

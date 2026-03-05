@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Use necessary namespaces
 use FlowRead\Addons\ReadingProgressBar\ReadingProgressBar;
+use FlowRead\Addons\ArticleReadTime\ArticleReadTime;
 
 class Addons {
     public function __construct() { 
@@ -18,6 +19,9 @@ class Addons {
     public function load_addons() { 
         // Load Reading Progress Bar Addon
         new ReadingProgressBar();
+
+        // Load Article Read Time Addon
+        new ArticleReadTime();
         // echo "hello from addons";
         // exit;
 
