@@ -1,14 +1,14 @@
-=== FlowRead – Smart Reading Experience ===
+=== FlowRead – Smart Reading Experience for Websites ===
 Contributors: sydurrahman
 Tags: reading progress bar, article read time, reading experience, user engagement, reading time estimate
 Requires at least: 5.0
-Tested up to: 6.4
+Tested up to: 6.9
 Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
-FlowRead enhances the reading experience with customizable reading progress bars and article read time estimates to boost user engagement and reduce bounce rates.
+Adds a reading progress bar and estimated article read time to improve engagement and reading experience.
 
 == Description ==
 
@@ -126,7 +126,10 @@ Simply don't select any post types in the settings, and the features won't displ
 - Admin settings panel
 - Mobile responsive design
 
-== Upgrade Notice ==
+== Screenshots ==
+
+
+== Changelog ==
 
 = 1.0.0 =
 First release of FlowRead. Install now to enhance your website's reading experience!
@@ -150,7 +153,7 @@ https://sydurrahman.com/flowread
 
 == Author ==
 
-**Syd Ur Rahman**
+**Sydur Rahman**
 - Website: https://sydurrahman.com/
 - Plugin: FlowRead – Smart Reading Experience for Websites
 
@@ -163,7 +166,7 @@ See the license file included with the plugin for full details.
 
 == Credits ==
 
-- Developed by Syd Ur Rahman
+- Developed by Sydur Rahman
 - Built for WordPress community
 - Following WordPress coding standards and best practices
 

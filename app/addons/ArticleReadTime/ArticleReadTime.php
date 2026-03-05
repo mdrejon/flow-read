@@ -15,8 +15,8 @@ class ArticleReadTime {
     }
 
     public function enqueue_assets() {
-        wp_enqueue_style( 'flowread-article-read-time', FLOWREAD_PLUGIN_URL . 'assets/app/css/article-read-time.css' );
-        wp_enqueue_script( 'flowread-article-read-time', FLOWREAD_PLUGIN_URL . 'assets/app/js/article-read-time.js', [ 'jquery' ], null, true );
+        wp_enqueue_style( 'flowread-article-read-time', FLOWREAD_PLUGIN_URL . 'assets/app/css/article-read-time.css', [], FLOWREAD_VERSION );
+        wp_enqueue_script( 'flowread-article-read-time', FLOWREAD_PLUGIN_URL . 'assets/app/js/article-read-time.js', [ 'jquery' ], FLOWREAD_VERSION, true );
     }
  
     /**

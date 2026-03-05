@@ -15,8 +15,8 @@ class ReadingProgressBar {
     }
 
     public function enqueue_assets() {
-        wp_enqueue_style( 'flowread-reading-bar', FLOWREAD_PLUGIN_URL . 'assets/app/css/reading-progressbar.css' );
-        wp_enqueue_script( 'flowread-reading-bar', FLOWREAD_PLUGIN_URL . 'assets/app/js/reading-progressbar.js', [ 'jquery' ], null, true );
+        wp_enqueue_style( 'flowread-reading-bar', FLOWREAD_PLUGIN_URL . 'assets/app/css/reading-progressbar.css', [], FLOWREAD_VERSION );
+        wp_enqueue_script( 'flowread-reading-bar', FLOWREAD_PLUGIN_URL . 'assets/app/js/reading-progressbar.js', [ 'jquery' ], FLOWREAD_VERSION, true );
     }
  
 
