@@ -119,20 +119,8 @@ Simply don't select any post types in the settings, and the features won't displ
 
 = 1.0.0 =
 - Initial release
-- Reading Progress Bar feature with multiple styles
-- Article Read Time calculation and display
-- Customizable colors and styling options
-- Support for multiple post types
-- Admin settings panel
-- Mobile responsive design
 
 == Screenshots ==
-
-
-== Changelog ==
-
-= 1.0.0 =
-First release of FlowRead. Install now to enhance your website's reading experience!
 
 == Development ==
 
