@@ -79,8 +79,8 @@ class ArticleReadTime {
     public function render_reading_time( $reading_time ) {
         $options = get_option( 'flowread_article_read_time', [] );
         
-        $before_text = isset( $options['before_text'] ) ? $options['before_text'] : __( 'Estimated reading time: ', 'flow-read' );
-        $after_text = isset( $options['after_text'] ) ? $options['after_text'] : __( ' minute read', 'flow-read' );
+        $before_text = isset( $options['before_text'] ) ? $options['before_text'] : __( 'Estimated reading time: ', 'flowread' );
+        $after_text = isset( $options['after_text'] ) ? $options['after_text'] : __( ' minute read', 'flowread' );
         
         $reading_time_text = $reading_time > 1 ? $reading_time . $after_text : $reading_time . $after_text;
         
@@ -225,7 +225,7 @@ class ArticleReadTime {
                 }
                 update_option( 'flowread_article_read_time', $settings );
                 
-                echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Settings saved successfully!', 'flow-read' ) . '</p></div>';
+                echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Settings saved successfully!', 'flowread' ) . '</p></div>';
             }
         }
 
@@ -235,14 +235,14 @@ class ArticleReadTime {
         
         // Define available choices
         $display_locations = [
-            'single_post' => __( 'Single Post', 'flow-read' ),
-            'home_page' => __( 'Home Page / Blog Page', 'flow-read' ),
-            'archive_page' => __( 'Archive Page', 'flow-read' ),
+            'single_post' => __( 'Single Post', 'flowread' ),
+            'home_page' => __( 'Home Page / Blog Page', 'flowread' ),
+            'archive_page' => __( 'Archive Page', 'flowread' ),
         ];
 
         $positions = [
-            'before_content' => __( 'Before Content', 'flow-read' ),
-            'after_content' => __( 'After Content', 'flow-read' ),
+            'before_content' => __( 'Before Content', 'flowread' ),
+            'after_content' => __( 'After Content', 'flowread' ),
         ];
 
         $post_types = get_post_types( [ 'public' => true ], 'objects' ); 
@@ -250,8 +250,8 @@ class ArticleReadTime {
         ?>
         <div class="flow-read-settings-wrap flowread-article-read-time-settings">
             <div class="flow-read-heading">
-                <h2><?php esc_html_e( 'Article Read Time Settings', 'flow-read' ); ?></h2>
-                <p><?php esc_html_e( 'Configure the article read time display on your site.', 'flow-read' ); ?></p>
+                <h2><?php esc_html_e( 'Article Read Time Settings', 'flowread' ); ?></h2>
+                <p><?php esc_html_e( 'Configure the article read time display on your site.', 'flowread' ); ?></p>
  
             </div>
             <form method="post" action="">
@@ -260,7 +260,7 @@ class ArticleReadTime {
                 <!-- Post Types -->
                 <div class="setting-group flow-read-flex">
                     <div class="setting-group-field" style="width: 100%;">
-                        <label><?php esc_html_e( 'Apply to Post Types', 'flow-read' ); ?></label>
+                        <label><?php esc_html_e( 'Apply to Post Types', 'flowread' ); ?></label>
                         <div class="checkbox-group">
                             <?php
                             $selected_post_types = isset( $options['post_types'] ) ? (array) $options['post_types'] : [];
@@ -283,7 +283,7 @@ class ArticleReadTime {
                 <div class="setting-group flow-read-flex">
                     <div class="setting-group-field" style="width: calc(33% - 16px);">
                         <label for="flowread_words_per_minute">
-                            <?php esc_html_e( 'Words Per Minute', 'flow-read' ); ?>
+                            <?php esc_html_e( 'Words Per Minute', 'flowread' ); ?>
                         </label>
                         <input type="number" id="flowread_words_per_minute" name="flowread_article_read_time[words_per_minute]" min="1" value="<?php echo isset( $options['words_per_minute'] ) ? esc_attr( $options['words_per_minute'] ) : '200'; ?>" />
                     </div>
@@ -291,10 +291,10 @@ class ArticleReadTime {
                     <!-- Position -->
                     <div class="setting-group-field" style="width: calc(33% - 16px);">
                         <label for="flowread_position">
-                            <?php esc_html_e( 'Article Read Time Position', 'flow-read' ); ?>
+                            <?php esc_html_e( 'Article Read Time Position', 'flowread' ); ?>
                         </label>
                         <select id="flowread_position" name="flowread_article_read_time[position]">
-                            <option value=""><?php esc_html_e( '-- Select Position --', 'flow-read' ); ?></option>
+                            <option value=""><?php esc_html_e( '-- Select Position --', 'flowread' ); ?></option>
                             <?php foreach ( $positions as $value => $label ) : ?>
                                 <option value="<?php echo esc_attr( $value ); ?>" <?php selected( isset( $options['position'] ) ? $options['position'] : '', $value ); ?>>
                                     <?php echo esc_html( $label ); ?>
@@ -306,7 +306,7 @@ class ArticleReadTime {
                     <!-- Font Size -->
                     <div class="setting-group-field" style="width: calc(33% - 16px);">
                         <label for="flowread_font_size">
-                            <?php esc_html_e( 'Font Size (px)', 'flow-read' ); ?>
+                            <?php esc_html_e( 'Font Size (px)', 'flowread' ); ?>
                         </label>
                         <input type="number" id="flowread_font_size" name="flowread_article_read_time[font_size]" min="8" value="<?php echo isset( $options['font_size'] ) ? esc_attr( $options['font_size'] ) : '14'; ?>" />
                     </div>
@@ -316,14 +316,14 @@ class ArticleReadTime {
                 <div class="setting-group flow-read-flex">
                     <div class="setting-group-field" style="width: calc(50% - 8px);">
                         <label for="flowread_before_text">
-                            <?php esc_html_e( 'Before Text', 'flow-read' ); ?>
+                            <?php esc_html_e( 'Before Text', 'flowread' ); ?>
                         </label>
                         <input type="text" id="flowread_before_text" name="flowread_article_read_time[before_text]" value="<?php echo isset( $options['before_text'] ) ? esc_attr( $options['before_text'] ) : 'Estimated reading time: '; ?>" />
                     </div>
 
                     <div class="setting-group-field" style="width: calc(50% - 8px);">
                         <label for="flowread_after_text">
-                            <?php esc_html_e( 'After Text', 'flow-read' ); ?>
+                            <?php esc_html_e( 'After Text', 'flowread' ); ?>
                         </label>
                         <input type="text" id="flowread_after_text" name="flowread_article_read_time[after_text]" value="<?php echo isset( $options['after_text'] ) ? esc_attr( $options['after_text'] ) : ' minute read'; ?>" />
                     </div>
@@ -332,7 +332,7 @@ class ArticleReadTime {
                 <!-- Display Location -->
                 <div class="setting-group flow-read-flex">
                     <div class="setting-group-field" style="width: 100%;">
-                        <label><?php esc_html_e( 'Show Estimated Read Time On', 'flow-read' ); ?></label>
+                        <label><?php esc_html_e( 'Show Estimated Read Time On', 'flowread' ); ?></label>
                         <div class="checkbox-group">
                             <?php
                             $selected_locations = isset( $options['display_location'] ) ? (array) $options['display_location'] : [];
@@ -352,14 +352,14 @@ class ArticleReadTime {
                 <div class="setting-group flow-read-flex">
                     <div class="setting-group-field" style="width: calc(50% - 8px);">
                         <label for="flowread_margin">
-                            <?php esc_html_e( 'Margin (px)', 'flow-read' ); ?>
+                            <?php esc_html_e( 'Margin (px)', 'flowread' ); ?>
                         </label>
                         <input type="number" id="flowread_margin" name="flowread_article_read_time[margin]" min="0" value="<?php echo isset( $options['margin'] ) ? esc_attr( $options['margin'] ) : '10'; ?>" />
                     </div>
 
                     <div class="setting-group-field" style="width: calc(50% - 8px);">
                         <label for="flowread_padding">
-                            <?php esc_html_e( 'Padding (px)', 'flow-read' ); ?>
+                            <?php esc_html_e( 'Padding (px)', 'flowread' ); ?>
                         </label>
                         <input type="number" id="flowread_padding" name="flowread_article_read_time[padding]" min="0" value="<?php echo isset( $options['padding'] ) ? esc_attr( $options['padding'] ) : '10'; ?>" />
                     </div>
@@ -369,20 +369,20 @@ class ArticleReadTime {
                 <div class="setting-group flow-read-flex">
                     <div class="setting-group-field" style="width: calc(50% - 8px);">
                         <label for="flowread_background_color">
-                            <?php esc_html_e( 'Background Color', 'flow-read' ); ?>
+                            <?php esc_html_e( 'Background Color', 'flowread' ); ?>
                         </label>
                         <input type="text" class="flowread-color-field" id="flowread_background_color" name="flowread_article_read_time[background_color]" data-default-color="#f5f5f5" value="<?php echo isset( $options['background_color'] ) ? esc_attr( $options['background_color'] ) : '#f5f5f5'; ?>" />
                     </div>
 
                     <div class="setting-group-field" style="width: calc(50% - 8px);">
                         <label for="flowread_text_color">
-                            <?php esc_html_e( 'Text Color', 'flow-read' ); ?>
+                            <?php esc_html_e( 'Text Color', 'flowread' ); ?>
                         </label>
                         <input type="text" class="flowread-color-field" id="flowread_text_color" name="flowread_article_read_time[text_color]" data-default-color="#333333" value="<?php echo isset( $options['text_color'] ) ? esc_attr( $options['text_color'] ) : '#333333'; ?>" />
                     </div>
                 </div>
 
-                <?php submit_button( __( 'Save Settings', 'flow-read' ) ); ?>
+                <?php submit_button( __( 'Save Settings', 'flowread' ) ); ?>
             </form>
         </div>
         <?php
@@ -391,7 +391,7 @@ class ArticleReadTime {
     }
 
     public function flowread_settings_tabs_menus( $tabs ) {
-        $tabs['article_read_time'] = __( 'Article Read Time', 'flow-read' );
+        $tabs['article_read_time'] = __( 'Article Read Time', 'flowread' );
         return $tabs;
     }
 }

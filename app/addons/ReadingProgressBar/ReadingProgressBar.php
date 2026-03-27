@@ -136,7 +136,7 @@ class ReadingProgressBar {
    
                 
                 update_option( 'flowread_reading_bar', $settings );
-                echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Settings saved successfully!', 'flow-read' ) . '</p></div>';
+                echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Settings saved successfully!', 'flowread' ) . '</p></div>';
             }
         }
 
@@ -146,15 +146,15 @@ class ReadingProgressBar {
         
         // Define available choices
         $display_positions = [
-            'top' => __( 'Top', 'flow-read' ),
-            'bottom' => __( 'Bottom', 'flow-read' ),
-            'fixed-top' => __( 'Fixed Top', 'flow-read' ),
+            'top' => __( 'Top', 'flowread' ),
+            'bottom' => __( 'Bottom', 'flowread' ),
+            'fixed-top' => __( 'Fixed Top', 'flowread' ),
         ];
 
         $styles = [
-            'classic' => __( 'Classic', 'flow-read' ),
-            'gradient' => __( 'Gradient', 'flow-read' ),
-            // 'animated' => __( 'Animated', 'flow-read' ),
+            'classic' => __( 'Classic', 'flowread' ),
+            'gradient' => __( 'Gradient', 'flowread' ),
+            // 'animated' => __( 'Animated', 'flowread' ),
         ];
 
         $post_types = get_post_types( [ 'public' => true ], 'objects' ); 
@@ -162,8 +162,8 @@ class ReadingProgressBar {
         ?>
         <div class="flow-read-settings-wrap flowread-progressbar-settings">
             <div class="flow-read-heading">
-                <h2><?php esc_html_e( 'Reading Progress Bar Settings', 'flow-read' ); ?></h2>
-                <p><?php esc_html_e( 'Configure the appearance and behavior of the reading progress bar on your site.', 'flow-read' ); ?></p>
+                <h2><?php esc_html_e( 'Reading Progress Bar Settings', 'flowread' ); ?></h2>
+                <p><?php esc_html_e( 'Configure the appearance and behavior of the reading progress bar on your site.', 'flowread' ); ?></p>
  
             </div>
             <form method="post" action="">
@@ -173,10 +173,10 @@ class ReadingProgressBar {
                     <!-- Display Position -->
                     <div class="setting-group-field" style="width: calc(33% - 16px);">
                         <label for="flowread_display_position">
-                            <?php esc_html_e( 'Display Position', 'flow-read' ); ?>
+                            <?php esc_html_e( 'Display Position', 'flowread' ); ?>
                         </label>
                         <select id="flowread_display_position" name="flowread_reading_bar[display_position]">
-                            <option value=""><?php esc_html_e( '-- Select Position --', 'flow-read' ); ?></option>
+                            <option value=""><?php esc_html_e( '-- Select Position --', 'flowread' ); ?></option>
                             <?php foreach ( $display_positions as $value => $label ) : ?>
                                 <option value="<?php echo esc_attr( $value ); ?>" <?php selected( isset( $options['display_position'] ) ? $options['display_position'] : '', $value ); ?>>
                                     <?php echo esc_html( $label ); ?>
@@ -188,10 +188,10 @@ class ReadingProgressBar {
                     <!-- Style Selection -->
                     <div class="setting-group-field" style="width: calc(33% - 16px);">
                         <label for="flowread_style">
-                            <?php esc_html_e( 'Style', 'flow-read' ); ?>
+                            <?php esc_html_e( 'Style', 'flowread' ); ?>
                         </label>
                         <select id="flowread_style" name="flowread_reading_bar[style]">
-                            <option value=""><?php esc_html_e( '-- Select Style --', 'flow-read' ); ?></option>
+                            <option value=""><?php esc_html_e( '-- Select Style --', 'flowread' ); ?></option>
                             <?php foreach ( $styles as $value => $label ) : ?>
                                 <option value="<?php echo esc_attr( $value ); ?>" <?php selected( isset( $options['style'] ) ? $options['style'] : '', $value ); ?>>
                                     <?php echo esc_html( $label ); ?>
@@ -203,7 +203,7 @@ class ReadingProgressBar {
                     <!-- Progress Bar Height -->
                     <div class="setting-group-field" style="width: calc(33% - 16px);">
                         <label for="flowread_height">
-                            <?php esc_html_e( 'Progress Bar Height (px)', 'flow-read' ); ?>
+                            <?php esc_html_e( 'Progress Bar Height (px)', 'flowread' ); ?>
                         </label>
                         <input type="number" id="flowread_height" name="flowread_reading_bar[height]" min="1" max="100" value="<?php echo isset( $options['height'] ) ? esc_attr( $options['height'] ) : '4'; ?>" />
                     </div>
@@ -213,7 +213,7 @@ class ReadingProgressBar {
                     <!-- Background Color -->
                     <div class="setting-group-field" style="width: calc(33% - 16px);">
                         <label for="flowread_background_color">
-                            <?php esc_html_e( 'Background Color', 'flow-read' ); ?>
+                            <?php esc_html_e( 'Background Color', 'flowread' ); ?>
                         </label>
                         <input type="text" class="flowread-color-field" id="flowread_background_color" name="flowread_reading_bar[background_color]" data-default-color="#f0f0f0" value="<?php echo isset( $options['background_color'] ) ? esc_attr( $options['background_color'] ) : '#f0f0f0'; ?>" />
                     </div>
@@ -221,7 +221,7 @@ class ReadingProgressBar {
                     <!-- Primary Color -->
                     <div class="setting-group-field" style="width: calc(33% - 16px);">
                         <label for="flowread_primary_color">
-                            <?php esc_html_e( 'Primary Color', 'flow-read' ); ?>
+                            <?php esc_html_e( 'Primary Color', 'flowread' ); ?>
                         </label>
                         <input type="text" class="flowread-color-field" id="flowread_primary_color" name="flowread_reading_bar[primary_color]" data-default-color="#007cba" value="<?php echo isset( $options['primary_color'] ) ? esc_attr( $options['primary_color'] ) : '#007cba'; ?>" />
                     </div>
@@ -229,7 +229,7 @@ class ReadingProgressBar {
                        <!-- Secondary Color -->
                     <div class="setting-group-field" id="flowread_secondary_color_field" style="width: calc(33% - 16px);">
                         <label for="flowread_secondary_color">
-                            <?php esc_html_e( 'Secondary Color', 'flow-read' ); ?>
+                            <?php esc_html_e( 'Secondary Color', 'flowread' ); ?>
                         </label>
                         <input type="text" class="flowread-color-field" id="flowread_secondary_color" name="flowread_reading_bar[secondary_color]" data-default-color="#007cba" value="<?php echo isset( $options['secondary_color'] ) ? esc_attr( $options['secondary_color'] ) : '#007cba'; ?>" />
                     </div>
@@ -241,7 +241,7 @@ class ReadingProgressBar {
                 <div class="setting-group flow-read-flex">
                       <!-- Post Types -->
                     <div class="setting-group-field" style="width: 100%;">
-                        <label><?php esc_html_e( 'Apply to Post Types', 'flow-read' ); ?></label>
+                        <label><?php esc_html_e( 'Apply to Post Types', 'flowread' ); ?></label>
                         <div class="checkbox-group">
                             <?php
                             $selected_post_types = isset( $options['post_types'] ) ? (array) $options['post_types'] : [];
@@ -264,7 +264,7 @@ class ReadingProgressBar {
 
              
 
-                <?php submit_button( __( 'Save Settings', 'flow-read' ) ); ?>
+                <?php submit_button( __( 'Save Settings', 'flowread' ) ); ?>
             </form>
         </div>
         <?php
@@ -273,7 +273,7 @@ class ReadingProgressBar {
     }
 
     public function flowread_settings_tabs_menus( $tabs ) {
-        $tabs['progressbar'] = __( 'Reading Progress Bar', 'flow-read' );
+        $tabs['progressbar'] = __( 'Reading Progress Bar', 'flowread' );
         return $tabs;
     }
 }

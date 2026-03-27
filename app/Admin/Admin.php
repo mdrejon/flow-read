@@ -43,8 +43,8 @@ class Admin {
      */
     public function add_menu() {
         add_menu_page(
-            __( 'FlowRead Settings', 'flow-read' ),
-            __( 'FlowRead', 'flow-read' ),
+            __( 'FlowRead Settings', 'flowread' ),
+            __( 'FlowRead', 'flowread' ),
             'manage_options',
             'flowread-settings',
             [ $this, 'render_settings_page' ],
@@ -70,7 +70,7 @@ class Admin {
         $active_tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : 'progressbar';
         ?>
         <div class="wrap">
-            <h1><?php echo esc_html__( 'FlowRead Settings', 'flow-read' ); ?></h1>
+            <h1><?php echo esc_html__( 'FlowRead Settings', 'flowread' ); ?></h1>
             
             <!-- Tab Navigation -->
             <nav class="nav-tab-wrapper">

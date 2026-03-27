@@ -5,8 +5,7 @@
     "license": "GPL-2.0+",
     "authors": [
         {
-            "name": "sydurrahman",
-            "homepage": "https://sydurrahman.com/"
+            "name": "sydurrahman"
         }
     ],
     "require": {

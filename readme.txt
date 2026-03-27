@@ -117,6 +117,10 @@ Simply don't select any post types in the settings, and the features won't displ
 
 == Changelog ==
 
+= 1.0.1 =
+- fixed rightful owner issue
+- fixed text domain issue
+
 = 1.0.0 =
 - Initial release
 
@@ -135,12 +139,10 @@ Simply don't select any post types in the settings, and the features won't displ
 == Support ==
 
 For support, feature requests, or bug reports, please visit:
-https://sydurrahman.com/flowread
 
 == Author ==
 
 **Sydur Rahman**
-- Website: https://sydurrahman.com/
 - Plugin: FlowRead – Smart Reading Experience for Websites
 
 == License ==
