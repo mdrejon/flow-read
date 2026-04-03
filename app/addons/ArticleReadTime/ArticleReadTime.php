@@ -11,12 +11,15 @@ class ArticleReadTime {
         add_filter( 'flowread_settings_tab_content', [ $this, 'render_article_read_time_settings_content' ], 11, 2 );
         add_filter( 'flowread_settings_tabs_menus', [ $this, 'flowread_settings_tabs_menus' ], 11, 2 );
         add_filter( 'the_content', [ $this, 'add_reading_time_to_content' ], 10 );
-        add_action( 'wp_head', [ $this, 'add_custom_styles' ] );
     }
 
     public function enqueue_assets() {
         wp_enqueue_style( 'flowread-article-read-time', FLOWREAD_PLUGIN_URL . 'assets/app/css/article-read-time.css', [], FLOWREAD_VERSION );
         wp_enqueue_script( 'flowread-article-read-time', FLOWREAD_PLUGIN_URL . 'assets/app/js/article-read-time.js', [ 'jquery' ], FLOWREAD_VERSION, true );
+
+        if ( $this->should_display_reading_time() ) {
+            wp_add_inline_style( 'flowread-article-read-time', $this->get_custom_styles_css() );
+        }
     }
  
     /**
@@ -117,13 +120,9 @@ class ArticleReadTime {
     }
 
     /**
-     * Add custom styles to head
+     * Build addon custom CSS based on saved settings.
      */
-    public function add_custom_styles() {
-        if ( ! $this->should_display_reading_time() ) {
-            return;
-        }
-        
+    public function get_custom_styles_css() {
         $options = get_option( 'flowread_article_read_time', [] );
         
         $font_size = isset( $options['font_size'] ) ? absint( $options['font_size'] ) : 14;
@@ -131,29 +130,33 @@ class ArticleReadTime {
         $padding = isset( $options['padding'] ) ? absint( $options['padding'] ) : 10;
         $background_color = isset( $options['background_color'] ) ? sanitize_hex_color( $options['background_color'] ) : '#f5f5f5';
         $text_color = isset( $options['text_color'] ) ? sanitize_hex_color( $options['text_color'] ) : '#333333';
-        
-        ?>
-        <style type="text/css">
-            .flowread-article-read-time .flowread-read-time-text {
-                font-size: <?php echo esc_attr( $font_size ); ?>px;
-                margin: <?php echo esc_attr( $margin ); ?>px auto;
-                padding: <?php echo esc_attr( $padding ); ?>px;
-                background-color: <?php echo esc_attr( $background_color ); ?>;
-                color: <?php echo esc_attr( $text_color ); ?>;
-                border-radius: 4px;
-                display: inline-block;
-            }
-            
-            .flowread-read-time-text {
-                display: inline-block;
-            }
-            
-            .flowread-read-time-text strong {
-                font-weight: 600;
-                color: <?php echo esc_attr( $text_color ); ?>;
-            }
-        </style> 
-        <?php
+
+        if ( empty( $background_color ) ) {
+            $background_color = '#f5f5f5';
+        }
+
+        if ( empty( $text_color ) ) {
+            $text_color = '#333333';
+        }
+
+        $css = ".flowread-article-read-time .flowread-read-time-text {\n";
+        $css .= "font-size: {$font_size}px;\n";
+        $css .= "margin: {$margin}px auto;\n";
+        $css .= "padding: {$padding}px;\n";
+        $css .= "background-color: {$background_color};\n";
+        $css .= "color: {$text_color};\n";
+        $css .= "border-radius: 4px;\n";
+        $css .= "display: inline-block;\n";
+        $css .= "}\n";
+        $css .= ".flowread-read-time-text {\n";
+        $css .= "display: inline-block;\n";
+        $css .= "}\n";
+        $css .= ".flowread-read-time-text strong {\n";
+        $css .= "font-weight: 600;\n";
+        $css .= "color: {$text_color};\n";
+        $css .= "}\n";
+
+        return $css;
     }
 
  
