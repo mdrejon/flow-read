@@ -4,7 +4,7 @@ Tags: reading progress bar, article read time, reading experience, user engageme
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -116,6 +116,9 @@ Simply don't select any post types in the settings, and the features won't displ
 5. Customization Options - Color and style selection
 
 == Changelog ==
+
+= 1.0.2 =
+- fixed Use wp_enqueue commands issue
 
 = 1.0.1 =
 - fixed rightful owner issue
