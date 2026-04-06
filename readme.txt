@@ -109,11 +109,8 @@ Simply don't select any post types in the settings, and the features won't displ
 
 == Screenshots ==
 
-1. FlowRead Settings Panel - Configure Reading Progress Bar
-2. Reading Progress Bar - Classic Style at top of page
-3. Reading Progress Bar - Gradient Style example
-4. Article Read Time - Estimated reading time display
-5. Customization Options - Color and style selection
+1. Configure Reading Progress Bar 
+2. Configure Article Read Time 
 
 == Changelog ==
 
