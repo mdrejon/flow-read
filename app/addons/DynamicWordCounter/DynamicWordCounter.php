@@ -259,7 +259,7 @@ class DynamicWordCounter {
 
         $opts    = $this->get_backend_options();
         $content = get_post_field( 'post_content', $post_id );
-        $text    = ! empty( $opts['exclude_html'] ) ? wp_strip_all_tags( $content ) : strip_tags( $content );
+        $text    = ! empty( $opts['exclude_html'] ) ? wp_strip_all_tags( $content ) : wp_strip_all_tags( $content );
         if ( ! empty( $opts['exclude_shortcodes'] ) ) {
             $text = preg_replace( '/\[.*?\]/s', ' ', $text );
         }

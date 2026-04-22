@@ -4,7 +4,7 @@ Tags: reading progress bar, article read time, reading experience, user engageme
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -41,21 +41,11 @@ Adds a reading progress bar and estimated article read time to improve engagemen
 
 ### Features in Detail
 
-**Reading Progress Bar**
-- Displays visual progress as users scroll through content
-- Available in two styles: Classic solid color or smooth gradient
-- Adjustable height (1-100px)
-- Custom color schemes for background and progress indicators
-- Selective display on specific post types
-- No impact on site performance
+**Reading Progress Bar** – Visual scroll-progress indicator with Classic/Gradient styles, adjustable height, custom colors, and selective post type display.
 
-**Article Read Time**
-- Automatically calculates estimated reading time
-- Configurable reading speed (default: 200 words per minute)
-- Display on selected post types
-- Customizable styling and positioning
-- Multiple format options for displaying time
-- Mobile-responsive design
+**Article Read Time** – Auto-calculates estimated reading time with configurable WPM, custom styling, and multiple display formats.
+
+**Dynamic Word Counter** – Real-time word counting for admin editor and frontend fields, with min/max limits, progress bar, floating or inline display, and full UI customisation.
 
 ### Customization Options
 
@@ -75,7 +65,7 @@ Adds a reading progress bar and estimated article read time to improve engagemen
 
 == Installation ==
 
-1. Upload the `flow-read` folder to the `/wp-content/plugins/` directory
+1. Upload the `flowread` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Navigate to FlowRead Settings in the admin panel
 4. Configure the Reading Progress Bar and Article Read Time settings
@@ -111,8 +101,12 @@ Simply don't select any post types in the settings, and the features won't displ
 
 1. Configure Reading Progress Bar 
 2. Configure Article Read Time 
+3. Configure Dynamic Word Counter 
 
 == Changelog ==
+
+= 1.0.3 =
+-  Features : Dynamic word counter Feature added
 
 = 1.0.2 =
 - fixed Use wp_enqueue commands issue
