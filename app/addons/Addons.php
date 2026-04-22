@@ -9,6 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Use necessary namespaces
 use FlowRead\Addons\ReadingProgressBar\ReadingProgressBar;
 use FlowRead\Addons\ArticleReadTime\ArticleReadTime;
+use FlowRead\Addons\DynamicWordCounter\DynamicWordCounter;
 
 class Addons {
     public function __construct() { 
@@ -22,6 +23,9 @@ class Addons {
 
         // Load Article Read Time Addon
         new ArticleReadTime();
+
+        // Load Dynamic Word Counter Addon
+        new DynamicWordCounter();
         // echo "hello from addons";
         // exit;
 
