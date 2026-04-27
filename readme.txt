@@ -4,7 +4,7 @@ Tags: reading progress bar, article read time, reading experience, user engageme
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 
@@ -17,18 +17,13 @@ Adds a reading progress bar and estimated article read time to improve engagemen
 ### Key Features
 
 ✨ **Reading Progress Bar**
-- Visual progress indicator showing how far readers have scrolled
-- Multiple display positions: Top, Bottom, or Fixed Top
-- Stylish designs: Classic and Gradient styles
-- Fully customizable colors and height
-- Works seamlessly across all post types
+-  Visual scroll-progress indicator with Classic/Gradient styles, adjustable height, custom colors, and selective post type display.
 
 ⏱️ **Article Read Time**
-- Automatic reading time calculation based on content length
-- Customizable words-per-minute setting
-- Smart position and formatting options
-- Helps readers decide whether to read now or save for later
-- Improves content discoverability
+- Auto-calculates estimated reading time with configurable WPM, custom styling, and multiple display formats.
+
+🔢 **Dynamic Word Counter**
+- Real-time word counting for admin editor and frontend fields, with min/max limits, progress bar, floating or inline display, and full UI customisation.
 
 ### Why FlowRead?
 
@@ -38,15 +33,7 @@ Adds a reading progress bar and estimated article read time to improve engagemen
 4. **Fully Customizable** – Complete control over colors, styles, and display options
 5. **Performance Optimized** – Lightweight and fast-loading
 6. **SEO Friendly** – Increases time-on-site metrics that benefit your rankings
-
-### Features in Detail
-
-**Reading Progress Bar** – Visual scroll-progress indicator with Classic/Gradient styles, adjustable height, custom colors, and selective post type display.
-
-**Article Read Time** – Auto-calculates estimated reading time with configurable WPM, custom styling, and multiple display formats.
-
-**Dynamic Word Counter** – Real-time word counting for admin editor and frontend fields, with min/max limits, progress bar, floating or inline display, and full UI customisation.
-
+ 
 ### Customization Options
 
 - **Colors**: Customize background color, primary color, and gradient colors
@@ -105,6 +92,10 @@ Simply don't select any post types in the settings, and the features won't displ
 
 == Changelog ==
 
+= 1.0.4 =
+-  Added : Appsero SDK
+-  Update : readme.txt file
+
 = 1.0.3 =
 -  Features : Dynamic word counter Feature added
 
@@ -133,6 +124,16 @@ Simply don't select any post types in the settings, and the features won't displ
 == Support ==
 
 For support, feature requests, or bug reports, please visit:
+
+== Privacy Policy ==
+
+FlowRead - Smart Reading Experience for Websites uses [Appsero](https://appsero.com) SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster and make product improvements.
+
+Appsero SDK **does not gather any data by default.** The SDK only starts gathering basic telemetry data **when a user allows it via the admin notice**. We collect the data to ensure a great user experience for all our users.
+
+Integrating Appsero SDK **DOES NOT IMMEDIATELY** start gathering data, **without confirmation from users in any case.**
+
+Learn more about how [Appsero collects and uses this data](https://appsero.com/privacy-policy/).
 
 == Author ==
 

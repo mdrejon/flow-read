@@ -22,7 +22,7 @@ final class Plugin {
     /**
      * Plugin version
      */
-    const VERSION = '1.0.3';
+    const VERSION = '1.0.4';
 
     /**
      * Singleton instance
@@ -124,4 +124,6 @@ final class Plugin {
     public function __wakeup() {
         throw new \Exception( 'Cannot unserialize singleton' );
     }
+
+    
 }

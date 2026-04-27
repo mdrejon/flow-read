@@ -6,6 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'FlowRead\\Addons\\' => array($baseDir . '/app/addons'),
     'FlowRead\\' => array($baseDir . '/app'),
+    'Appsero\\' => array($vendorDir . '/appsero/client/src'),
 );

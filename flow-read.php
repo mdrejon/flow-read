@@ -2,7 +2,7 @@
 /**
  * Plugin Name: FlowRead – Smart Reading Experience for Websites
  * Description:  FlowRead is a WordPress plugin that enhances the reading experience on your website by providing a clean, distraction-free layout and customizable reading options.
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: sydurrahman
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt

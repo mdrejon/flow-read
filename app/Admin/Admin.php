@@ -24,6 +24,9 @@ class Admin {
      */
     public function __construct() {
         $this->init_hooks();
+        
+        // Initialize the plugin tracker
+        $this->flowread_init_tracker_flowread();
     }
 
     /**
@@ -189,5 +192,23 @@ class Admin {
             FLOWREAD_VERSION,
             true
         );
+    }
+
+    /**
+     * Initialize the plugin tracker
+     *
+     * @return void
+     */
+    public function flowread_init_tracker_flowread() {
+
+        if ( ! class_exists( 'Appsero\Client' ) ) {
+            require_once __DIR__ . '/appsero/src/Client.php';
+        }
+
+        $client = new \Appsero\Client( 'e0a7e2be-fa08-46b9-ad91-92a8e7f59719', 'FlowRead', __FILE__ );
+
+        // Active insights
+        $client->insights()->init();
+
     }
 }

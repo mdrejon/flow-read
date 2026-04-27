@@ -9,7 +9,8 @@
         }
     ],
     "require": {
-        "php": ">=7.4"
+        "php": ">=7.4",
+        "appsero/client": "^2.0"
     },
     "autoload": {
         "psr-4": {

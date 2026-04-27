@@ -9,25 +9,30 @@ class ComposerStaticInit3174e55cb45624b652a1348b130d8cbd
     public static $prefixLengthsPsr4 = array (
         'F' => 
         array (
-            'FlowRead\\Addons\\' => 16,
             'FlowRead\\' => 9,
+        ),
+        'A' => 
+        array (
+            'Appsero\\' => 8,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'FlowRead\\Addons\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/app/addons',
-        ),
         'FlowRead\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+        'Appsero\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/appsero/client/src',
+        ),
     );
 
     public static $classMap = array (
+        'Appsero\\Client' => __DIR__ . '/..' . '/appsero/client/src/Client.php',
+        'Appsero\\Insights' => __DIR__ . '/..' . '/appsero/client/src/Insights.php',
+        'Appsero\\License' => __DIR__ . '/..' . '/appsero/client/src/License.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'FlowRead\\Addons\\Addons' => __DIR__ . '/../..' . '/app/addons/Addons.php',
         'FlowRead\\Admin\\Admin' => __DIR__ . '/../..' . '/app/Admin/Admin.php',
         'FlowRead\\Frontend\\Frontend' => __DIR__ . '/../..' . '/app/Frontend/Frontend.php',
         'FlowRead\\Plugin' => __DIR__ . '/../..' . '/app/Plugin.php',

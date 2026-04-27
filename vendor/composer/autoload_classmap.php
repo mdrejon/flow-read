@@ -6,8 +6,10 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Appsero\\Client' => $vendorDir . '/appsero/client/src/Client.php',
+    'Appsero\\Insights' => $vendorDir . '/appsero/client/src/Insights.php',
+    'Appsero\\License' => $vendorDir . '/appsero/client/src/License.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'FlowRead\\Addons\\Addons' => $baseDir . '/app/addons/Addons.php',
     'FlowRead\\Admin\\Admin' => $baseDir . '/app/Admin/Admin.php',
     'FlowRead\\Frontend\\Frontend' => $baseDir . '/app/Frontend/Frontend.php',
     'FlowRead\\Plugin' => $baseDir . '/app/Plugin.php',
